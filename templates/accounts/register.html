@@ -1,0 +1,14 @@
+{% extends 'auth_base.html' %}
+{% block title %}Sign up · VibeConnect{% endblock %}
+
+{% block form %}
+<h2>Create your account</h2>
+<p class="muted">It takes less than a minute.</p>
+<form method="post" class="auth-form" novalidate>
+  {% csrf_token %}
+  {% include 'partials/form_fields.html' %}
+  <p class="hint">Use at least 8 characters and don't use only numbers.</p>
+  <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+</form>
+<p class="auth-switch">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+{% endblock %}

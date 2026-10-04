@@ -1,0 +1,14 @@
+{% extends 'auth_base.html' %}
+{% block title %}Log in · VibeConnect{% endblock %}
+
+{% block form %}
+<h2>Welcome back</h2>
+<p class="muted">Log in to see what your people are up to.</p>
+<form method="post" class="auth-form" novalidate>
+  {% csrf_token %}
+  {% include 'partials/form_fields.html' %}
+  <input type="hidden" name="next" value="{{ next }}">
+  <button class="btn btn-primary btn-block" type="submit">Log in</button>
+</form>
+<p class="auth-switch">New to VibeConnect? <a href="{% url 'register' %}">Create an account</a></p>
+{% endblock %}

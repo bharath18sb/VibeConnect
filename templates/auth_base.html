@@ -1,0 +1,29 @@
+{% extends 'base_root.html' %}
+
+{% block body_class %}auth-body{% endblock %}
+
+{% block body %}
+<div class="auth-wrap">
+  <section class="auth-hero" aria-hidden="false">
+    <div class="auth-blob b1"></div><div class="auth-blob b2"></div><div class="auth-blob b3"></div>
+    <a href="{% url 'login' %}" class="logo logo-light">{% include 'partials/logo.html' %}</a>
+    <div class="auth-hero-copy">
+      <h1>Your people.<br>Your pace.<br>Your vibe.</h1>
+      <p>Share moments, follow friends, and keep the conversation going.</p>
+    </div>
+    <div class="float-chip c1"><svg class="icon"><use href="#i-heart"/></svg> 128 likes</div>
+    <div class="float-chip c2"><svg class="icon"><use href="#i-user-plus"/></svg> maya started following you</div>
+    <div class="float-chip c3"><svg class="icon"><use href="#i-comment"/></svg> “this is so good!”</div>
+  </section>
+
+  <section class="auth-panel">
+    <button id="theme-toggle" class="icon-btn auth-theme" type="button" aria-label="Toggle light/dark mode">
+      <svg class="icon icon-moon"><use href="#i-moon"/></svg>
+      <svg class="icon icon-sun"><use href="#i-sun"/></svg>
+    </button>
+    <div class="auth-card">
+      {% block form %}{% endblock %}
+    </div>
+  </section>
+</div>
+{% endblock %}

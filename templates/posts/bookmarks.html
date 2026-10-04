@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Saved · VibeConnect{% endblock %}
+
+{% block content %}
+<div class="page-title"><h1>Saved posts</h1><p class="muted">Posts you bookmarked, most recent first.</p></div>
+<div id="feed"></div>
+<div class="center"><button id="load-more" class="btn btn-ghost" hidden>Load more</button></div>
+{% endblock %}
+
+{% block page_scripts %}<script src="{% static 'js/bookmarks.js' %}"></script>{% endblock %}

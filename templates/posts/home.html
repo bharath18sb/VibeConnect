@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home · VibeConnect{% endblock %}
+
+{% block content %}
+<section class="card composer" aria-label="Create a post">
+  <form id="composer-form">
+    <div class="composer-row">
+      {% if my_profile.profile_image %}<img class="avatar" src="{{ my_profile.profile_image.url }}" alt="" style="width:44px;height:44px">
+      {% else %}<span class="avatar avatar-initials" style="width:44px;height:44px">{{ request.user.username|first|upper }}</span>{% endif %}
+      <textarea id="composer-text" maxlength="500" rows="2" placeholder="What's your vibe today, {{ request.user.first_name|default:request.user.username }}?"></textarea>
+    </div>
+    <div id="composer-preview" class="img-preview" hidden>
+      <img alt="Selected image preview">
+      <button type="button" class="icon-btn" id="composer-remove-img" aria-label="Remove image"><svg class="icon"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="composer-bar">
+      <label class="btn btn-ghost btn-sm"><svg class="icon"><use href="#i-image"/></svg> Photo<input type="file" id="composer-image" accept="image/*" hidden></label>
+      <span class="counter" id="composer-counter">0/500</span>
+      <button class="btn btn-primary" type="submit" id="composer-submit">Post</button>
+    </div>
+  </form>
+</section>
+
+<div class="tabs" role="tablist">
+  <button class="tab active" role="tab" data-feed="home">Following</button>
+  <button class="tab" role="tab" data-feed="explore">Explore</button>
+  <span class="tab-indicator"></span>
+</div>
+
+<div id="feed"></div>
+<div class="center"><button id="load-more" class="btn btn-ghost" hidden>Load more</button></div>
+{% endblock %}
+
+{% block page_scripts %}<script src="{% static 'js/home.js' %}"></script>{% endblock %}

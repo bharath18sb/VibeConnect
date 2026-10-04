@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Post by {{ post.author.username }} · VibeConnect{% endblock %}
+
+{% block content %}
+<div class="page-title"><a href="javascript:history.back()" class="muted">&larr; Back</a></div>
+<div id="feed" data-post-id="{{ post.pk }}"></div>
+{% endblock %}
+
+{% block page_scripts %}<script src="{% static 'js/post.js' %}"></script>{% endblock %}

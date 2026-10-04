@@ -1,0 +1,104 @@
+{% extends 'base_root.html' %}
+{% load static %}
+
+{% block body %}
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="{% url 'home' %}" class="logo" aria-label="VibeConnect home">{% include 'partials/logo.html' %}</a>
+
+    <form class="searchbar" action="{% url 'search' %}" method="get" role="search">
+      <svg class="icon"><use href="#i-search"/></svg>
+      <input type="search" name="q" placeholder="Search people…" value="{{ request.GET.q }}" autocomplete="off" aria-label="Search people">
+    </form>
+
+    <div class="topbar-actions">
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle light/dark mode">
+        <svg class="icon icon-moon"><use href="#i-moon"/></svg>
+        <svg class="icon icon-sun"><use href="#i-sun"/></svg>
+      </button>
+      <a class="icon-btn has-badge" href="{% url 'notifications' %}" aria-label="Notifications">
+        <svg class="icon"><use href="#i-bell"/></svg>
+        <span class="notif-badge" hidden>0</span>
+      </a>
+      <a class="nav-avatar" href="{% url 'profile' request.user.username %}" aria-label="My profile">
+        {% if my_profile.profile_image %}<img class="avatar" src="{{ my_profile.profile_image.url }}" alt="" style="width:36px;height:36px">
+        {% else %}<span class="avatar avatar-initials" style="width:36px;height:36px;font-size:15px">{{ request.user.username|first|upper }}</span>{% endif %}
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="app">
+  <nav class="sidenav" aria-label="Main">
+    <a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"><svg class="icon"><use href="#i-home"/></svg><span class="label">Home</span></a>
+    <a href="{% url 'search' %}" class="nav-link {% if request.resolver_match.url_name == 'search' %}active{% endif %}"><svg class="icon"><use href="#i-search"/></svg><span class="label">Search</span></a>
+    <a href="{% url 'notifications' %}" class="nav-link has-badge {% if request.resolver_match.url_name == 'notifications' %}active{% endif %}"><svg class="icon"><use href="#i-bell"/></svg><span class="label">Notifications</span><span class="notif-badge" hidden>0</span></a>
+    <a href="{% url 'bookmarks' %}" class="nav-link {% if request.resolver_match.url_name == 'bookmarks' %}active{% endif %}"><svg class="icon"><use href="#i-bookmark"/></svg><span class="label">Saved</span></a>
+    <a href="{% url 'profile' request.user.username %}" class="nav-link {% if request.resolver_match.url_name == 'profile' and profile_user == request.user %}active{% endif %}"><svg class="icon"><use href="#i-user"/></svg><span class="label">Profile</span></a>
+    <form method="post" action="{% url 'logout' %}" class="logout-form">
+      {% csrf_token %}
+      <button type="submit" class="nav-link nav-logout"><svg class="icon"><use href="#i-logout"/></svg><span class="label">Log out</span></button>
+    </form>
+  </nav>
+
+  <main class="main" id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <aside class="aside">
+    {% block aside %}
+    <section class="card widget">
+      <h3>Who to follow</h3>
+      <div id="suggestions">
+        <div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div>
+      </div>
+    </section>
+    <p class="footnote">VibeConnect &middot; made with Django</p>
+    {% endblock %}
+  </aside>
+</div>
+
+{# Mobile bottom navigation #}
+<nav class="bottom-nav" aria-label="Mobile">
+  <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}" aria-label="Home"><svg class="icon"><use href="#i-home"/></svg></a>
+  <a href="{% url 'search' %}" class="{% if request.resolver_match.url_name == 'search' %}active{% endif %}" aria-label="Search"><svg class="icon"><use href="#i-search"/></svg></a>
+  <a href="{% url 'bookmarks' %}" class="{% if request.resolver_match.url_name == 'bookmarks' %}active{% endif %}" aria-label="Saved"><svg class="icon"><use href="#i-bookmark"/></svg></a>
+  <a href="{% url 'notifications' %}" class="has-badge {% if request.resolver_match.url_name == 'notifications' %}active{% endif %}" aria-label="Notifications"><svg class="icon"><use href="#i-bell"/></svg><span class="notif-badge" hidden>0</span></a>
+  <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit" aria-label="Log out"><svg class="icon"><use href="#i-logout"/></svg></button></form>
+</nav>
+
+{# ---------- Shared modals ---------- #}
+<div class="modal-backdrop" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+  <div class="modal modal-sm">
+    <h3 id="confirm-title">Are you sure?</h3>
+    <p class="muted" id="confirm-message"></p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" type="button" data-close>Cancel</button>
+      <button class="btn btn-danger" type="button" id="confirm-ok">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="edit-post-modal" role="dialog" aria-modal="true" aria-labelledby="edit-post-title">
+  <div class="modal">
+    <div class="modal-head"><h3 id="edit-post-title">Edit post</h3><button class="icon-btn" type="button" data-close aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button></div>
+    <form id="edit-post-form">
+      <textarea id="edit-content" class="input" rows="4" maxlength="500" placeholder="What's on your mind?"></textarea>
+      <div id="edit-preview" class="img-preview" hidden><img alt="Post image"><button type="button" class="icon-btn" id="edit-remove-img" aria-label="Remove image"><svg class="icon"><use href="#i-x"/></svg></button></div>
+      <div class="composer-bar">
+        <label class="btn btn-ghost btn-sm"><svg class="icon"><use href="#i-image"/></svg> Change photo<input type="file" id="edit-image" accept="image/*" hidden></label>
+        <span class="counter" id="edit-counter">0/500</span>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" type="button" data-close>Cancel</button>
+        <button class="btn btn-primary" type="submit" id="edit-save">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/postcard.js' %}"></script>
+{% block page_scripts %}{% endblock %}
+{% endblock %}

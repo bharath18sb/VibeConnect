@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search · VibeConnect{% endblock %}
+
+{% block content %}
+<div class="page-title"><h1>Find people</h1><p class="muted">Search by username or name.</p></div>
+<div class="card search-box">
+  <svg class="icon"><use href="#i-search"/></svg>
+  <input type="search" id="search-input" class="input" placeholder="Try “maya” or “alex kumar”…" value="{{ q }}" autocomplete="off" autofocus>
+</div>
+<div id="results" class="card list-card" hidden></div>
+<div id="search-empty" class="empty-state"></div>
+<div class="center"><button id="load-more" class="btn btn-ghost" hidden>Load more</button></div>
+{% endblock %}
+
+{% block page_scripts %}<script src="{% static 'js/search.js' %}"></script>{% endblock %}

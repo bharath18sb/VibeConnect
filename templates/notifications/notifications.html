@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Notifications · VibeConnect{% endblock %}
+
+{% block content %}
+<div class="page-title row-between">
+  <div><h1>Notifications</h1><p class="muted">Follows, likes and comments on your posts.</p></div>
+  <button class="btn btn-ghost btn-sm" id="mark-all">Mark all as read</button>
+</div>
+<div id="notif-list" class="card list-card"></div>
+<div class="center"><button id="load-more" class="btn btn-ghost" hidden>Load more</button></div>
+{% endblock %}
+
+{% block page_scripts %}<script src="{% static 'js/notifications.js' %}"></script>{% endblock %}

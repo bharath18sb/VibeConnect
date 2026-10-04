@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ profile_user.username }} · VibeConnect{% endblock %}
+
+{% block content %}
+<section class="card profile" id="profile-header" data-username="{{ profile_user.username }}">
+  <div class="profile-cover"></div>
+  <div class="skeleton-block" style="height:150px;margin:16px"></div>
+</section>
+
+<div class="page-title"><h2>Posts</h2></div>
+<div id="feed"></div>
+<div class="center"><button id="load-more" class="btn btn-ghost" hidden>Load more</button></div>
+
+{# Followers / following list #}
+<div class="modal-backdrop" id="users-modal" role="dialog" aria-modal="true" aria-labelledby="users-title">
+  <div class="modal">
+    <div class="modal-head"><h3 id="users-title">Followers</h3><button class="icon-btn" type="button" data-close aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button></div>
+    <div id="users-list" class="modal-list"></div>
+    <div class="center"><button class="btn btn-ghost btn-sm" id="users-more" hidden>Load more</button></div>
+  </div>
+</div>
+
+{# Edit profile #}
+{% if profile_user == request.user %}
+<div class="modal-backdrop" id="edit-profile-modal" role="dialog" aria-modal="true" aria-labelledby="edit-profile-title">
+  <div class="modal">
+    <div class="modal-head"><h3 id="edit-profile-title">Edit profile</h3><button class="icon-btn" type="button" data-close aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button></div>
+    <form id="edit-profile-form">
+      <div class="avatar-edit">
+        <div id="ep-avatar"></div>
+        <div>
+          <label class="btn btn-ghost btn-sm"><svg class="icon"><use href="#i-camera"/></svg> Change photo<input type="file" id="ep-image" accept="image/*" hidden></label>
+          <button type="button" class="btn btn-ghost btn-sm" id="ep-remove-image">Remove</button>
+        </div>
+      </div>
+      <div class="field"><label for="ep-name">Full name</label><input id="ep-name" class="input" maxlength="100"></div>
+      <div class="field"><label for="ep-bio">Bio</label><textarea id="ep-bio" class="input" rows="3" maxlength="300" placeholder="Tell people a little about you"></textarea><span class="counter" id="ep-counter">0/300</span></div>
+      <p class="hint">Username: @{{ profile_user.username }} (cannot be changed)</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" type="button" data-close>Cancel</button>
+        <button class="btn btn-primary" type="submit" id="ep-save">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block page_scripts %}<script src="{% static 'js/profile.js' %}"></script>{% endblock %}
