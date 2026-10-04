@@ -1,107 +1,108 @@
-# 🌐 VibeConnect — Mini Social Media Platform
+Yep bro 👍 Here is the **plain version**. Copy from `# 🌐 VibeConnect` all the way to the end and paste directly into `README.md`.
 
-VibeConnect is a full-stack mini social-media web application built with **Django, Django REST Framework, SQLite, HTML, CSS and JavaScript**.
+ # 🌐 VibeConnect — Mini Social Media Platform
 
-It provides a modern social-media experience where users can create posts, interact with other users, follow people, save posts, receive notifications and manage their profiles.
+ VibeConnect is a full-stack mini social-media web application built with **Django, Django REST Framework, SQLite, HTML, CSS and Vanilla JavaScript**.
 
-The project uses Django templates for the page structure and a REST API with JavaScript `fetch()` for dynamic content and interactions.
+ The application allows users to create posts, interact with other users, follow people, like and comment on posts, save posts, manage profiles and receive notifications.
+
+ The project combines Django templates for page rendering with a REST API and JavaScript Fetch API for dynamic interactions.
 
 ---
 
-## ✨ Features
+ ## ✨ Features
 
-### 👤 Authentication & Profiles
+ ### 👤 Authentication & Profiles
 
-- User registration and login
+ - User registration and login
 - Django session-based authentication
 - Secure PBKDF2 password hashing
-- User profiles with:
-  - Profile picture
-  - Full name
-  - Username
-  - Bio
-  - Followers count
-  - Following count
+- User profiles
+- Profile pictures
+- Full name and username
+- User bio
+- Followers and following counts
 - Edit own profile
 - View other users' profiles
 - Protected pages and API endpoints
 
-### 📝 Posts
+ ### 📝 Posts
 
-- Create text posts
-- Upload images with posts
+ - Create text posts
+- Upload images
 - Edit own posts
 - Delete own posts
 - Display author and creation date
-- "Edited" indicator
+- Edited indicator
 - Like / unlike posts
 - Like counter
 - Double-click to like
 - Copy post link
-- `@mentions`
-- `#hashtags`
+- @mentions
+- #hashtags
 
-### 💬 Comments
+ ### 💬 Comments
 
-- Add comments
+ - Add comments
 - View comments
 - Delete own comments
 - Live comment count
 
-### 🤝 Follow System
+ ### 🤝 Follow System
 
-- Follow users
+ - Follow users
 - Unfollow users
 - Followers list
 - Following list
-- Follow / unfollow from search results
-- "Who to follow" suggestions
+- Follow / unfollow from search
+- Who to follow suggestions
 - Prevent self-following
 - Prevent duplicate follows
 
-### 🏠 Home Feed
+ ### 🏠 Home Feed
 
-- Personalized home feed
+ - Personalized home feed
 - Posts from followed users
 - Own posts included
 - Newest posts first
 - Load-more pagination
-- Explore feed showing posts from all users
+- Explore feed containing posts from all users
 
-### 🔎 Search
+ ### 🔎 Search
 
-- Search users by username or name
+ - Search users by username
+- Search users by name
 - Debounced live search
 - Follow / unfollow directly from search results
 
-### 🔔 Notifications
+ ### 🔔 Notifications
 
-Users receive notifications for:
+ Users receive notifications for:
 
-- New followers
+ - New followers
 - Likes
 - Comments
 
-Additional features:
+ Additional features:
 
-- Unread notification badge
+ - Unread notification badge
 - Automatic unread-count refresh
 - Mark individual notification as read
 - Mark all notifications as read
 
-### 🔖 Bookmarks
+ ### 🔖 Bookmarks
 
-- Save posts
+ - Save posts
 - Remove saved posts
 - Dedicated saved posts page
 - Duplicate bookmarks prevented
 
-### 🎨 UI / UX
+ ### 🎨 UI / UX
 
-- Responsive design
+ - Responsive design
 - Desktop, tablet and mobile support
 - Light / dark mode
-- Theme preference stored in `localStorage`
+- Theme preference stored in localStorage
 - Toast notifications
 - Loading skeletons
 - Confirmation dialogs
@@ -111,11 +112,11 @@ Additional features:
 - Mobile bottom navigation
 - Responsive post cards
 
-### 🛠️ Admin Panel
+ ### 🛠️ Admin Panel
 
-Django Admin provides management for:
+ Django Admin provides management for:
 
-- Users
+ - Users
 - Profiles
 - Posts
 - Comments
@@ -126,67 +127,111 @@ Django Admin provides management for:
 
 ---
 
-# 🚀 Quick Start
+ ## 🛠️ Tech Stack
 
-## Requirements
+ | Technology | Purpose |
+| --- | --- |
+| Python | Backend programming |
+| Django | Web framework |
+| Django REST Framework | REST API |
+| SQLite | Database |
+| HTML5 | Page structure |
+| CSS3 | Styling and responsive design |
+| JavaScript | Dynamic interactions |
+| Django Templates | Page rendering |
+| Fetch API | API communication |
 
-- Python 3.10+
+No React, Vue, Angular, Node.js or Express is used.
+
+---
+
+ # 🚀 Quick Start
+
+ ## Requirements
+
+ - Python 3.10+
 - pip
 - Git
 
-## 1. Clone the repository
+ ## 1\. Clone the repository
 
-```bash
+```
 git clone https://github.com/YOUR_USERNAME/VibeConnect.git
 cd VibeConnect
+```
 
-2. Create a virtual environment
-Windows
+ ## 2\. Create a virtual environment
+
+ ### Windows
+
+```
 python -m venv venv
 venv\Scripts\activate
+```
 
-macOS / Linux
+ ### macOS / Linux
+
+```
 python3 -m venv venv
 source venv/bin/activate
+```
 
-3. Install dependencies
+ ## 3\. Install dependencies
+
+```
 pip install -r requirements.txt
+```
 
-4. Create the database
+ ## 4\. Create the database
+
+```
 python manage.py migrate
+```
 
-5. Add demo data
-Optional:
+ ## 5\. Add demo data
 
+ Optional:
+
+```
 python manage.py seed_demo
+```
 
-Demo accounts:
+ ### Demo Accounts
 
-Username	Password
-maya	vibe12345
-arjun	vibe12345
-sara	vibe12345
-leo	vibe12345
+ | Username | Password |
+| --- | --- |
+| maya | vibe12345 |
+| arjun | vibe12345 |
+| sara | vibe12345 |
+| leo | vibe12345 |
 
-6. Create an admin account
-Optional:
+## 6\. Create an admin account
 
+ Optional:
+
+```
 python manage.py createsuperuser
+```
 
-Follow the prompts to create your admin account.
+ ## 7\. Run the application
 
-7. Run the application
+```
 python manage.py runserver
+```
 
-Open:
+ Open:
 
-http://127.0.0.1:8000/
+ http://127.0.0.1:8000/
 
-Admin panel:
+ Admin panel:
 
-http://127.0.0.1:8000/admin/
+ http://127.0.0.1:8000/admin/
 
-🏗️ Project Structure
+---
+
+ # 🏗️ Project Structure
+
+```
 VibeConnect/
 │
 ├── manage.py
@@ -239,7 +284,6 @@ VibeConnect/
 ├── static/
 │   ├── css/
 │   │   └── style.css
-│   │
 │   └── js/
 │       ├── api.js
 │       ├── ui.js
@@ -252,55 +296,57 @@ VibeConnect/
 │       └── post.js
 │
 └── media/
-    └── ...
+```
 
-🔄 How the Application Works
-VibeConnect follows a Django + REST API architecture.
+---
 
-                    Browser
-                       │
-                       │ HTML + JavaScript
-                       ▼
-               Django URL Router
-                       │
-              ┌────────┴────────┐
-              │                 │
-              ▼                 ▼
-        Django Views       DRF API Views
-              │                 │
-              │                 ▼
-              │            Serializers
-              │                 │
-              └────────┬────────┘
-                       ▼
-                   Django ORM
-                       │
-                       ▼
-                     SQLite
+ # 🔄 Application Architecture
 
-Pages are rendered using Django templates.
+ VibeConnect follows a Django + REST API architecture.
 
-JavaScript uses the REST API to dynamically load and update:
+```
+Browser
+   │
+   │ HTML + JavaScript
+   ▼
+Django URL Router
+   │
+   ├───────────────┐
+   │               │
+   ▼               ▼
+Django Views    DRF API Views
+   │               │
+   │               ▼
+   │           Serializers
+   │               │
+   └───────┬───────┘
+           ▼
+       Django ORM
+           │
+           ▼
+         SQLite
+```
 
-Posts
+ Django templates provide the page structure while JavaScript communicates with the REST API for dynamic functionality.
 
-Likes
+ The API handles:
 
-Comments
+ - Posts
+- Likes
+- Comments
+- Followers
+- Search
+- Notifications
+- Bookmarks
+- User profiles
 
-Followers
+---
 
-Search results
+ # 🗄️ Database Models
 
-Notifications
+ The main relationships are:
 
-Bookmarks
-
-User profiles
-
-🗄️ Database Models
-The main database relationships are:
-
+```
 User
  │
  ├── Profile
@@ -313,355 +359,356 @@ User
  ├── Follow
  │
  └── Notification
+```
 
-User / Profile
-Stores authentication and profile information.
+ ### User / Profile
 
-Post
-Stores:
+ Stores authentication and profile information.
 
-Content
+ ### Post
 
-Image
+ Stores:
 
-Author
+ - Content
+- Image
+- Author
+- Creation date
+- Updated date
 
-Creation date
+ ### Comment
 
-Updated date
+ Stores comments associated with posts and users.
 
-Comment
-Stores comments associated with posts and users.
+ ### Like
 
-Like
-Stores which users liked which posts.
+ Stores which users liked which posts.
 
-Duplicate likes are prevented using a database constraint.
+ Duplicate likes are prevented using database constraints.
 
-Bookmark
-Stores saved posts.
+ ### Bookmark
 
-Duplicate bookmarks are prevented using a database constraint.
+ Stores saved posts.
 
-Follow
-Stores follower → following relationships.
+ Duplicate bookmarks are prevented using database constraints.
 
-Self-following and duplicate follows are prevented.
+ ### Follow
 
-Notification
-Stores:
+ Stores follower → following relationships.
 
-Recipient
+ Self-following and duplicate follows are prevented.
 
-Sender
+ ### Notification
 
-Notification type
+ Stores:
 
-Related post
+ - Recipient
+- Sender
+- Notification type
+- Related post
+- Read/unread status
+- Creation date
 
-Read/unread status
+---
 
-Creation date
+ # 🔌 REST API
 
-🔌 REST API
-All API endpoints require an authenticated session.
+ All API endpoints require an authenticated session.
 
-Authentication / User
-Method	Endpoint	Purpose
-GET / PATCH	/api/me/	View/update current user
-GET	/api/users/<username>/	View public profile
-POST / DELETE	/api/users/<username>/follow/	Follow/unfollow
-GET	/api/users/<username>/followers/	Followers
-GET	/api/users/<username>/following/	Following
+ ## Authentication / Users
 
-Search
-Method	Endpoint	Purpose
-GET	/api/search/?q=text	Search users
-GET	/api/suggestions/	Follow suggestions
+ | Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET / PATCH | /api/me/ | View/update current user |
+| GET | /api/users/\<username\>/ | View public profile |
+| POST / DELETE | /api/users/\<username\>/follow/ | Follow/unfollow |
+| GET | /api/users/\<username\>/followers/ | Followers |
+| GET | /api/users/\<username\>/following/ | Following |
 
-Posts
-Method	Endpoint	Purpose
-GET	/api/posts/	List posts
-POST	/api/posts/	Create post
-GET	/api/posts/<id>/	View post
-PATCH	/api/posts/<id>/	Edit post
-DELETE	/api/posts/<id>/	Delete post
-POST / DELETE	/api/posts/<id>/like/	Like/unlike
-POST / DELETE	/api/posts/<id>/bookmark/	Save/unsave
+## Search
 
-Comments
-Method	Endpoint	Purpose
-GET	/api/posts/<id>/comments/	List comments
-POST	/api/posts/<id>/comments/	Add comment
-DELETE	/api/comments/<id>/	Delete own comment
+ | Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET | /api/search/?q=text | Search users |
+| GET | /api/suggestions/ | Follow suggestions |
 
-Bookmarks
+## Posts
+
+ | Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET | /api/posts/ | List posts |
+| POST | /api/posts/ | Create post |
+| GET | /api/posts/\<id\>/ | View post |
+| PATCH | /api/posts/\<id\>/ | Edit post |
+| DELETE | /api/posts/\<id\>/ | Delete post |
+| POST / DELETE | /api/posts/\<id\>/like/ | Like/unlike |
+| POST / DELETE | /api/posts/\<id\>/bookmark/ | Save/unsave |
+
+## Comments
+
+ | Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET | /api/posts/\<id\>/comments/ | List comments |
+| POST | /api/posts/\<id\>/comments/ | Add comment |
+| DELETE | /api/comments/\<id\>/ | Delete own comment |
+
+## Bookmarks
+
+```
 GET /api/bookmarks/
+```
 
-Returns the current user's saved posts.
+ Returns the current user's saved posts.
 
-Notifications
+ ## Notifications
+
+```
 GET  /api/notifications/
 GET  /api/notifications/unread-count/
 POST /api/notifications/mark-all-read/
 POST /api/notifications/<id>/read/
+```
 
-🎨 Frontend
-The frontend uses:
+---
 
-HTML
+ # 🎨 Frontend
 
-CSS
+ The frontend uses:
 
-Vanilla JavaScript
+ - HTML5
+- CSS3
+- Vanilla JavaScript
+- Django Templates
+- Fetch API
+- CSS Variables
+- Local Storage
 
-Django Templates
+ The project does not use:
 
-Fetch API
+ - React
+- Vue
+- Angular
+- Node.js
+- Express
 
-CSS Variables
+---
 
-Local Storage
+ # 🔐 Security
 
-No frontend framework is required.
+ The project includes multiple security measures:
 
-The project does not use:
+ - Django authentication
+- Session-based authentication
+- PBKDF2 password hashing
+- CSRF protection
+- login\_required for protected pages
+- DRF IsAuthenticated protection
+- Author-only permissions
+- Django ORM for database queries
+- Database UniqueConstraint
+- Django template auto-escaping
+- JavaScript text escaping
+- Self-follow prevention
+- User-specific protected actions
 
-React
+---
 
-Vue
+ # 🌙 Dark Mode
 
-Angular
+ VibeConnect supports both light and dark themes.
 
-Node.js
+ The theme is implemented using CSS variables.
 
-Express
+ The selected theme is stored in browser localStorage, allowing the user's preference to persist between sessions.
 
-🔐 Security
-The project includes several security measures:
+---
 
-Django authentication
+ # 🧪 Testing
 
-Session-based authentication
+ Run the Django test suite with:
 
-PBKDF2 password hashing
-
-CSRF protection
-
-login_required for protected pages
-
-DRF IsAuthenticated protection
-
-Author-only permissions for editing/deleting content
-
-Django ORM for database queries
-
-Database UniqueConstraint
-
-Django template auto-escaping
-
-JavaScript text escaping
-
-Self-follow prevention
-
-User-specific access to protected actions
-
-🌙 Dark Mode
-VibeConnect supports both light and dark themes.
-
-The theme is implemented using CSS variables and the selected preference is stored in browser localStorage.
-
-This allows the user's theme preference to remain available between sessions.
-
-🧪 Testing
-Run the automated Django test suite:
-
+```
 python manage.py test
+```
 
-Django will automatically discover and execute the project's tests.
+ Django automatically discovers and runs the project's tests.
 
-⚙️ Useful Django Commands
-Start development server
+---
+
+ # ⚙️ Useful Django Commands
+
+ ### Start development server
+
+```
 python manage.py runserver
+```
 
-Create migrations
+ ### Create migrations
+
+```
 python manage.py makemigrations
+```
 
-Apply migrations
+ ### Apply migrations
+
+```
 python manage.py migrate
+```
 
-Create admin account
+ ### Create admin account
+
+```
 python manage.py createsuperuser
+```
 
-Seed demo data
+ ### Seed demo data
+
+```
 python manage.py seed_demo
+```
 
-Run tests
+ ### Run tests
+
+```
 python manage.py test
+```
 
-⚙️ Configuration
-Development settings are used by default.
+---
 
-For production deployment, configure environment variables such as:
+ # ⚙️ Configuration
 
+ Development settings are used by default.
+
+ For production deployment, configure environment variables such as:
+
+```
 DJANGO_DEBUG=False
 DJANGO_SECRET_KEY=your-secret-key
 DJANGO_ALLOWED_HOSTS=your-domain.com
+```
 
-For production, also configure:
+ Production deployments should also use:
 
-PostgreSQL or another production database
+ - PostgreSQL or another production database
+- Proper static-file serving
+- Production media storage
+- HTTPS
+- Secure cookies
+- Production web server
 
-Static file serving
+---
 
-Media file storage
+ # 🧠 Viva / Interview Cheat Sheet
 
-HTTPS
+ ### Why Django?
 
-Secure cookies
+ Django provides:
 
-Production web server
+ - Authentication
+- ORM
+- Admin panel
+- URL routing
+- Security features
+- Template system
 
-🧠 Viva / Interview Cheat Sheet
-Why Django?
-Django provides:
+ ### Why Django REST Framework?
 
-Authentication
+ DRF provides:
 
-ORM
+ - Serializers
+- API validation
+- ViewSets
+- Routers
+- Pagination
+- Permissions
+- JSON responses
 
-Admin panel
+ ### How is authentication handled?
 
-URL routing
+ Django session authentication is used.
 
-Security features
+ The browser maintains the session cookie while JavaScript sends the CSRF token with write requests.
 
-Template system
+ ### How is the feed generated?
 
-Why Django REST Framework?
-DRF provides:
+ The home feed contains posts from the current user and users they follow.
 
-Serializers
+ Posts are ordered by newest creation date.
 
-API validation
+ ### How are duplicate likes prevented?
 
-ViewSets
+ Duplicate likes are prevented using:
 
-Routers
+ - Database UniqueConstraint
+- get\_or\_create()
 
-Pagination
+ ### How are duplicate follows prevented?
 
-Permissions
+ Duplicate follows are prevented using:
 
-JSON responses
+ - UniqueConstraint
+- get\_or\_create()
 
-How is authentication handled?
-Django session authentication is used.
+ Self-following is also explicitly prevented.
 
-The browser maintains the session cookie while JavaScript sends the CSRF token with write requests.
+ ### How does pagination work?
 
-How is the feed generated?
-The home feed contains posts from:
+ The API returns paginated results containing:
 
-Current user
-+
-Users they follow
+ - count
+- next
+- previous
+- results
 
-Posts are ordered by newest creation date.
+ The frontend follows the next URL when loading additional posts.
 
-How are duplicate likes prevented?
-Duplicate likes are prevented using:
+ ### How is XSS protection handled?
 
-Database UniqueConstraint
-+
-get_or_create()
+ Django templates automatically escape user content.
 
-How are duplicate follows prevented?
-The same approach is used for follows:
+ JavaScript also escapes user-generated text before inserting it into HTML.
 
-UniqueConstraint
-+
-get_or_create()
+---
 
-Self-following is also explicitly prevented.
+ # 🔮 Future Improvements
 
-How does pagination work?
-The API returns paginated results:
+ Possible future enhancements:
 
-{
-    "count": 100,
-    "next": "...",
-    "previous": null,
-    "results": []
-}
+ - Password reset through email
+- Email verification
+- Real-time notifications using WebSockets
+- Direct messaging
+- Stories
+- Video posts
+- Post sharing
+- Hashtag pages
+- Advanced post search
+- Infinite scrolling
+- OAuth / Google login
+- PostgreSQL production database
+- Cloud image storage
+- Docker deployment
+- CI/CD pipeline
+- Automated API documentation
 
-The frontend follows the next URL when loading additional posts.
+---
 
-How is XSS protection handled?
-Django templates automatically escape user content.
+ # 👨‍💻 Author
 
-JavaScript also escapes user-generated text before inserting it into HTML.
+ **Bharath S B**
 
-🔮 Future Improvements
-Possible future enhancements:
+ This project demonstrates full-stack web development using:
 
-Password reset through email
+ - Python
+- Django
+- Django REST Framework
+- SQLite
+- HTML
+- CSS
+- JavaScript
+- REST APIs
+- Authentication
+- Database design
 
-Email verification
+---
 
-Real-time notifications using WebSockets
-
-Direct messaging
-
-Stories
-
-Video posts
-
-Post sharing
-
-Hashtag pages
-
-Advanced post search
-
-Infinite scrolling
-
-OAuth / Google login
-
-PostgreSQL production database
-
-Cloud image storage
-
-Docker deployment
-
-CI/CD pipeline
-
-Automated API documentation
-
-👨‍💻 Author
-Bharath S B
-
-This project was built to demonstrate full-stack web development using:
-
-Python
-
-Django
-
-Django REST Framework
-
-SQLite
-
-HTML
-
-CSS
-
-JavaScript
-
-REST APIs
-
-Authentication
-
-Database design
-
-⭐ Project
-
-VibeConnect is a learning-focused full-stack social-media application demonstrating how Django and Django REST Framework can be combined with vanilla JavaScript to build a modern interactive web application.
+ ⭐ **VibeConnect is a learning-focused full-stack social-media application built to demonstrate modern Django and REST API development.**
